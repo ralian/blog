@@ -1,0 +1,25 @@
+body {
+	color: #eee;
+	background-color: #111;
+	font-family: "Fira Sans", sans-serif;
+}
+
+blockquote {
+	background-color: #222;
+	color: #ddd;
+	padding-top: 20px;
+	padding-right: 30px;
+	padding-bottom: 20px;
+	padding-left: 30px;
+	border-left: 2px solid white;
+}
+
+pre:has(code) {
+	background-color: black;
+	border: 1px solid white;
+	padding: 5px;
+}
+
+code {
+	font-family: "Fira Code", monospace;
+}
