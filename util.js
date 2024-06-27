@@ -2,10 +2,7 @@ async function loadmd(path) {
 	let converter = new showdown.Converter();
 	let resp = await fetch(path);
 	let md = await resp.text();
-	$('body').html( converter.makeHtml(md) );
-	if (window.location.hash !== "") {
-		$(window.location.hash)[0].scrollIntoView()
-	}
+	$('#content').html( converter.makeHtml(md) );
 	
 	for (block of $('code')) {
 	  let len = block.textContent.split("\n").length;
@@ -13,6 +10,10 @@ async function loadmd(path) {
 		let lineref = [...Array(len).keys()].slice(1).join("\n");
 		$(`<code class="lineno">${lineref}</code>`).prependTo(block.parentElement);
 	  }
+	}
+	
+	if (window.location.hash !== "") {
+		$(window.location.hash)[0].scrollIntoView()
 	}
 }
 

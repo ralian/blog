@@ -15,7 +15,22 @@
 		<link rel="stylesheet" href="style.css"/>
 	</head>
 	<body>
-		<p id="posts"></p>
+		<div class="topnav">
+		  <a class="active" href="?">Home</a>
+		  <a href="">Archive</a>
+		  <a href="?article=pages/contact.md">Contact</a>
+		  <a href="?article=pages/aboutme.md">About Me!</a>
+		</div>
+		<div id="spacer"></div>
+		<script>
+			let height = $('.topnav')[0].getBoundingClientRect().height;
+			$('#spacer')[0].style = `height: ${height}px;`
+		</script>
+		<div id="content">
+			<p>Here is a fluff intro I am writing to test my content formatting.</p>
+			<p>Here is a fluff intro I am writing to test my content formatting.</p>
+			<p id="posts"></p>
+		</div>
 		<script>
 			let article = new URL(window.location.href).searchParams.get("article");
 			if (article) {

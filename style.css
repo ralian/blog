@@ -2,7 +2,16 @@ body {
 	color: #eee;
 	background-color: #111;
 	font-family: "Fira Sans", sans-serif;
+	margin: 0;
 }
+
+#content {
+	margin: 8px;
+	margin-left: 30%;
+	margin-right: 30%;
+}
+
+/* MD Elements */
 
 blockquote {
 	background-color: #222;
@@ -13,6 +22,54 @@ blockquote {
 	padding-left: 30px;
 	border-left: 2px solid white;
 }
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
+}
+
+/*a {
+	background: linear-gradient(90deg, rgba(12,7,88,1) 14%, rgba(98,0,81,1) 73%);
+	-webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}*/
+
+a:link {color: #4760e8;}
+a:visited {color: #18ac28;}
+a:hover {color: #36cdd5;}
+a:active {color: white;}
+
+/* Navbar */
+
+.topnav {
+  background: linear-gradient(90deg, rgba(12,7,88,1) 14%, rgba(98,0,81,1) 73%);
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: rgba(255,255,255,0.05);
+}
+
+.topnav a.active {
+  background-color: rgba(255,255,255,0.2);
+  color: white;
+}
+
+/* Code Blocks */
 
 pre:has(code) {
 	display: flex;
