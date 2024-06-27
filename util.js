@@ -6,6 +6,14 @@ async function loadmd(path) {
 	if (window.location.hash !== "") {
 		$(window.location.hash)[0].scrollIntoView()
 	}
+	
+	for (block of $('code')) {
+	  let len = block.textContent.split("\n").length;
+	  if (len > 1) {
+		let lineref = [...Array(len).keys()].slice(1).join("\n");
+		$(`<code class="lineno">${lineref}</code>`).prependTo(block.parentElement);
+	  }
+	}
 }
 
 async function loadmanifest(path) {

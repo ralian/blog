@@ -15,11 +15,27 @@ blockquote {
 }
 
 pre:has(code) {
+	display: flex;
+	overflow-x: auto; /* Scroll box instead of making wider than the page */
 	background-color: black;
-	border: 1px solid white;
+	border: 1px solid #AAA;
 	padding: 5px;
+	width: 100%;
 }
 
 code {
 	font-family: "Fira Code", monospace;
+}
+
+code.lineno {
+	border-right: 1px solid #AAA;
+	padding-right: 5px;
+	margin-right: 5px;
+	user-select: none; /* Never want to copy line numbers by mistake */
+}
+
+p > code {
+	background-color: black;
+	border: 0.5px solid #AAA;
+	padding: 2px;
 }
