@@ -15,6 +15,13 @@ async function loadmd(path) {
 	if (window.location.hash !== "") {
 		$(window.location.hash)[0].scrollIntoView()
 	}
+	
+	try {MathJax.typeset();} catch(ex) {
+		var script = document.querySelector('#MathJax-script');
+		script.addEventListener('load', function() {
+			MathJax.typeset();
+		});
+	}
 }
 
 async function loadmanifest(path) {
