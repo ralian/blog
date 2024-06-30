@@ -28,6 +28,6 @@ async function loadmanifest(path) {
 	let resp = await fetch(path);
 	let manifest = await resp.json();
 	for (item of manifest) {
-		$(`<a href='${item.url}'>${item.name}</a>`).appendTo($('#posts')[0]);
+		$(`<details><summary>${item.created}</summary><a href='${item.url}'>${item.name}</a></details>`).appendTo($('#posts')[0]);
 	}
 }
