@@ -16,6 +16,7 @@ async function loadmd(path) {
 		$(window.location.hash)[0].scrollIntoView()
 	}
 	
+	// Mathjax may or may not have loaded yet
 	try {MathJax.typeset();} catch(ex) {
 		var script = document.querySelector('#MathJax-script');
 		script.addEventListener('load', function() {
@@ -27,7 +28,39 @@ async function loadmd(path) {
 async function loadmanifest(path) {
 	let resp = await fetch(path);
 	let manifest = await resp.json();
+	
+	let nestedByDate = {};
 	for (item of manifest) {
-		$(`<details><summary>${item.created}</summary><a href='${item.url}'>${item.name}</a></details>`).appendTo($('#posts')[0]);
+		let cdate = new Date(item.created);
+		let y = cdate.getFullYear();
+		let m = cdate.getMonth();
+		let d = cdate.getDay();
+		nestedByDate = {...nestedByDate,
+			[y]: {...nestedByDate[y],
+				[m]: {...(nestedByDate[y]? nestedByDate[y][m] : undefined),
+					[d]: item
+				}
+			}
+		};
 	}
+	
+	let htmlStr = "";
+	let suffix = " open";
+	const dateOpts = {weekday: "long", year: "numeric", month: "long", day: "numeric"};
+	Object.keys(nestedByDate).sort().reverse().forEach(function(y, yi) {
+		htmlStr += `<blockquote><details${suffix}><summary>${y}</summary>`;
+		Object.keys(nestedByDate[y]).sort().reverse().forEach(function(m, mi) {
+			let mName = new Date(2000, m, 01).toLocaleString('default', { month: 'long' }); // Localize the numeric month
+			htmlStr += `<blockquote><details${suffix}><summary>${mName}</summary>`;
+			Object.keys(nestedByDate[y][m]).sort().forEach(function(d, i) {
+				let dateStr = new Date(nestedByDate[y][m][d].created).toLocaleString('default', dateOpts);
+				htmlStr += `<p>${dateStr}: <a href='${nestedByDate[y][m][d].url}'>${nestedByDate[y][m][d].name}</a></p>`;
+			});
+			htmlStr += "</details></blockquote>";
+			suffix = "";
+		});
+		htmlStr += "</details></blockquote>";
+	});
+	
+	$(htmlStr).appendTo($("#posts")[0]);
 }
