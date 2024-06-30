@@ -2,7 +2,7 @@ async function loadmd(path) {
 	let converter = new showdown.Converter();
 	let resp = await fetch(path);
 	let md = await resp.text();
-	$('#content').html( converter.makeHtml(md) );
+	$('#article').html( converter.makeHtml(md) );
 	
 	for (block of $('code')) {
 	  let len = block.textContent.split("\n").length;
@@ -62,5 +62,5 @@ async function loadmanifest(path) {
 		htmlStr += "</details></blockquote>";
 	});
 	
-	$(htmlStr).appendTo($("#posts")[0]);
+	$(htmlStr).appendTo($("#article")[0]);
 }
