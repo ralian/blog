@@ -57,6 +57,7 @@ a:active {color: white;}
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 2; /* Render in front of mathjax */
 }
 
 .topnav a {
