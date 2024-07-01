@@ -9,10 +9,10 @@
 		"next": ""
 	},
 	{
-		"name": "Test Post 2",
-		"url": "?article=articles/testpost/post.md",
-		"tags": "test c++",
-		"created": "Jun 28 2024",
+		"name": "The Case for a Runtime Site Generator",
+		"url": "?article=articles/2024.06.30/backend.md",
+		"tags": "web markdown",
+		"created": "Jun 30 2024",
 		"preview": "",
 		"prev": "",
 		"next": ""
@@ -22,15 +22,6 @@
 		"url": "?article=articles/testpost/post.md",
 		"tags": "test c++",
 		"created": "Jun 26 2023",
-		"preview": "",
-		"prev": "",
-		"next": ""
-	},
-	{
-		"name": "Test Post 3",
-		"url": "?article=articles/testpost/post.md",
-		"tags": "test c++",
-		"created": "July 26 2024",
 		"preview": "",
 		"prev": "",
 		"next": ""
