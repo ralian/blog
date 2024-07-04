@@ -1,18 +1,18 @@
-# Simplest Usable Configuration Language
+# Lisp-like Configuration Language
 
-This is Epoch, an incredibly simple config language. Just messing around with a formal language definition for now. The language's alphabet is comprised of unicode characters, \\\(\mathbb{U}\\\). The language needs to have:
+Let's build a simple formal grammar for this language. The language's alphabet is comprised of unicode characters, \\\(\mathbb{U}\\\). The language needs to have:
 
 - Tokens, made of characters and separated by a separator
 - Scope (dictated by `(` and `)`)
 
-Here is the formal grammar:
+Here are some definitions:
 $$
 \displaylines{S \\\
 N = \lbrace V, X\rbrace \\\
 \mathbb{X} = \lbrace \text{space}, \text{tab}, \text{newline} \rbrace\\\
 \Sigma = \mathbb{U} - \mathbb{X} - \lbrace\ (, )\rbrace \\\
 P = \begin{cases}
-      S \rightarrow \varepsilon\ |\ SxS\ |\ S(S)\ |\ (S)S\ |\ T \\\ 
+      S \rightarrow \varepsilon\ |\ SxS\ |\ (S)\ |\ T \\\ 
       T \rightarrow eT\ |\ e
 \end{cases}
 }
@@ -23,8 +23,7 @@ There are two production rules, they are
 >
 > - \\\(\varepsilon\\\)
 > - S followed by a separator \\\(x \in \mathbb{X}\\\) followed by another S
-> - S followed by (S)
-> - (S) followed by S
+> - S scoped up 1 level
 > - Token Rule T
 
 
@@ -42,12 +41,12 @@ Because there are only non-terminal tokens on the LHS of all the production rule
 
 ```
 dave (
-	id (oia3515jne1351foinai)
+	id (13556416678)
 	age (30)
 )
 
 michael (
-	id (08hqt084h30hg08hg428)
+	id (14242343423)
 	age (24)
 )
 
@@ -68,7 +67,44 @@ To query the string, we simply provide this subset we are interested in (the que
 
 `michael(age)` -> `24`
 
-`dave` -> `id (oia3515jne1351foinai) age (30)`  
+`dave` -> `id (13556416678) age (30)`  
 
-`jenny` -> `∅`
+`jenny` -> `()`
+
+### Parser Pseudocode
+
+```C
+using span = (const char * start, const char* end)
+using token = union {token* children, span}
+
+W = [' ', '\t', '\n']
+E = not WSP and not ['(', ')']
+
+const char * parse(span input, token *output) {
+    span cur_token = null;
+    while (input.start < input.end) {
+        if (*input.start in E) {
+            if (cur_token == null)
+                cur_token.start = input.start
+        } else {
+            if (cur_token != null) {
+                cur_token.end = input.start
+                *output = cur_token;
+                output += 1;
+                cur_token = null;
+            }
+        }
+
+        if (*input.start == ')') return (input.start + 1)
+
+        if (*input.start == '(') {
+            token... children = [];
+            input.start = parse(input, children);
+            output.children = children;
+        }
+        
+        input.start++;
+    }
+}
+```
 
