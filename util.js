@@ -1,3 +1,19 @@
+function renderGraphs() {
+	let opts = {
+		format: 'svg',
+		graphAttributes: {
+			stylesheet: 'graph.css' // Not working
+		}
+	}
+	
+	for (p of $('p')) {
+		if (p.innerText.match("^(strict)? ?(graph|digraph)")) {
+			p.innerHTML = Viz(p.innerText, {format: 'svg'});
+			p.className = 'graph';
+		}
+	}
+}
+
 async function loadmd(path) {
 	let converter = new showdown.Converter();
 	let resp = await fetch(path);
@@ -18,9 +34,17 @@ async function loadmd(path) {
 	
 	// Mathjax may or may not have loaded yet
 	try {MathJax.typeset();} catch(ex) {
-		var script = document.querySelector('#MathJax-script');
-		script.addEventListener('load', function() {
+		var script_jax = document.querySelector('#MathJax-script');
+		script_jax.addEventListener('load', function() {
 			MathJax.typeset();
+		});
+	}
+	
+	// Same with Graphviz
+	try {renderGraphs();} catch(ex) {
+		var script_viz = document.querySelector('#GraphViz-script');
+		script_viz.addEventListener('load', function() {
+			renderGraphs();
 		});
 	}
 }
