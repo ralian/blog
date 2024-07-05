@@ -18,37 +18,10 @@
 		"next": ""
 	},
 	{
-		"name": "Test Post 3",
-		"url": "?article=articles/testpost/post.md",
-		"tags": "test c++",
-		"created": "Jun 26 2023",
-		"preview": "",
-		"prev": "",
-		"next": ""
-	},
-	{
-		"name": "Test Post 3",
-		"url": "?article=articles/testpost/post.md",
-		"tags": "test c++",
-		"created": "May 26 2024",
-		"preview": "",
-		"prev": "",
-		"next": ""
-	},
-	{
-		"name": "Test Post 3",
-		"url": "?article=articles/testpost/post.md",
-		"tags": "test c++",
-		"created": "Apr 26 2024",
-		"preview": "",
-		"prev": "",
-		"next": ""
-	},
-	{
-		"name": "Test Post 3",
-		"url": "?article=articles/testpost/post.md",
-		"tags": "test c++",
-		"created": "Jan 26 2024",
+		"name": "A Simple Lisp-like Configuration Language",
+		"url": "?article=articles/2024.06.31/lispgrammar.md",
+		"tags": "lisp parsing grammar python",
+		"created": "Jun 31 2024",
 		"preview": "",
 		"prev": "",
 		"next": ""
