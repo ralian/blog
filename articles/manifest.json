@@ -34,5 +34,14 @@
 		"preview": "",
 		"prev": "",
 		"next": ""
+	},
+	{
+		"name": "PostGIS Analysis: Part 2/X",
+		"url": "?article=articles/2024.07.16/postgis-cmake-2.md",
+		"tags": "postgis postgresql c c++ cmake",
+		"created": "Jul 16 2024",
+		"preview": "",
+		"prev": "",
+		"next": ""
 	}
 ]
