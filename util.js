@@ -52,7 +52,7 @@ async function loadmanifest(path) {
 		let cdate = new Date(item.created);
 		let y = cdate.getFullYear();
 		let m = cdate.getMonth();
-		let d = cdate.getDay();
+		let d = cdate.getDate();
 		nestedByDate = {...nestedByDate,
 			[y]: {...nestedByDate[y],
 				[m]: {...(nestedByDate[y]? nestedByDate[y][m] : undefined),
@@ -70,7 +70,7 @@ async function loadmanifest(path) {
 		Object.keys(nestedByDate[y]).sort().reverse().forEach(function(m, mi) {
 			let mName = new Date(2000, m, 01).toLocaleString('default', { month: 'long' }); // Localize the numeric month
 			htmlStr += `<blockquote><details${suffix}><summary>${mName}</summary>`;
-			Object.keys(nestedByDate[y][m]).sort().forEach(function(d, i) {
+			Object.keys(nestedByDate[y][m]).sort().reverse().forEach(function(d, i) {
 				let dateStr = new Date(nestedByDate[y][m][d].created).toLocaleString('default', dateOpts);
 				htmlStr += `<p>${dateStr}: <a href='${nestedByDate[y][m][d].url}'>${nestedByDate[y][m][d].name}</a></p>`;
 			});
