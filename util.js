@@ -1,16 +1,10 @@
 function renderGraphs() {
-	let opts = {
-		format: 'svg',
-		graphAttributes: {
-			stylesheet: 'graph.css' // Not working
-		}
-	}
-	
-	for (p of $('p')) {
-		if (p.innerText.match("^(strict)? ?(graph|digraph)")) {
-			p.innerHTML = Viz(p.innerText, {format: 'svg'});
-			p.className = 'graph';
-		}
+	for (c of $('code.graphviz')) {
+		let p = document.createElement("p");
+		p.innerHTML = Viz(c.innerText, {format: 'svg'});
+		p.className = 'graph';
+		let pre = c.parentElement
+		pre.replaceWith(p);
 	}
 }
 
@@ -20,7 +14,7 @@ async function loadmd(path) {
 	let md = await resp.text();
 	$('#article').html( converter.makeHtml(md) );
 	
-	for (block of $('code')) {
+	for (block of $('code:not(.graphviz)')) {
 	  let len = block.textContent.split("\n").length;
 	  if (len > 1) {
 		let lineref = [...Array(len).keys()].slice(1).join("\n");

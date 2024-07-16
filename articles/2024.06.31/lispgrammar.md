@@ -37,6 +37,7 @@ Because there are only non-terminal tokens on the LHS of all the production rule
 
 ## State Transitions
 
+```graphviz
 digraph {
 	x -> x;
 	e -> e;
@@ -47,6 +48,7 @@ digraph {
 	"(" -> e; e -> ")";
 	x -> ")" [dir=both];
 }
+```
 
 You might notice that we can't transition from e directly to the scope open, or from the scope close to e. This isn't something that would break the language, but I'm not sure how to write the production rules for this in a clean way. So, for simplicity, we require \\\(Sx(\\) and \\\()xS\\) rather than \\\(S(\\) and \\\()S\\).
 
