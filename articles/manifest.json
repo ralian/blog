@@ -43,5 +43,14 @@
 		"preview": "",
 		"prev": "",
 		"next": ""
+	},
+	{
+		"name": "Cleaner Queries in Python with Row Factories",
+		"url": "?article=articles/2023.08.21/psycopg_row_factories.md",
+		"tags": "python psycopg postgresql",
+		"created": "Aug 21 2023",
+		"preview": "",
+		"prev": "",
+		"next": ""
 	}
 ]
