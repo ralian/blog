@@ -43,10 +43,7 @@ async function loadmd(path) {
 	}
 }
 
-async function loadmanifest(path) {
-	let resp = await fetch(path);
-	let manifest = await resp.json();
-	
+function m_archive(manifest) {
 	let nestedByDate = {};
 	for (item of manifest) {
 		let cdate = new Date(item.created);
@@ -81,4 +78,27 @@ async function loadmanifest(path) {
 	});
 	
 	$(htmlStr).appendTo($("#article")[0]);
+};
+
+let m_search_manifest = {}
+function m_search_change() {
+	let s = $("#search")[0].value;
+	$("#results")[0].innerHTML = "";
+	for (item of m_search_manifest) {
+		if (item.name.toLowerCase().includes(s.toLowerCase()) || item.tags.toLowerCase().includes(s.toLowerCase()))
+			$(`<p>${item.created}: <a href='${item.url}'>${item.name}</a></p>`).appendTo($("#results")[0]);
+	}
+}
+
+function m_search(manifest) {
+	m_search_manifest = manifest;
+	$("#article")[0].innerHTML = "<input id='search' type='text' onchange='m_search_change()'><div id='results'>";
+}
+
+async function loadmanifest(path, opts) {
+	let resp = await fetch(path);
+	let manifest = await resp.json();
+	
+	if (opts === "search") m_search(manifest);
+	else m_archive(manifest);
 }

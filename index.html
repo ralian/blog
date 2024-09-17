@@ -31,11 +31,13 @@
 			<div id="article"></p>
 		</div>
 		<script>
-			let article = new URL(window.location.href).searchParams.get("article");
+			let u = new URL(window.location.href);
+			let article = u.searchParams.get("article");
 			if (article) {
 				loadmd(article);
 			} else {
-				loadmanifest("articles/manifest.json");
+				let opts = u.searchParams.get("manifest");
+				loadmanifest("articles/manifest.json", opts);
 			}
 		</script>
 	</body>
