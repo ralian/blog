@@ -52,5 +52,14 @@
 		"preview": "",
 		"prev": "",
 		"next": ""
+	},
+	{
+		"name": "Serializing Python Objects in Git Blobs",
+		"url": "?article=articles/2024.09.10/post.md",
+		"tags": "python git json",
+		"created": "Oct 9 2024",
+		"preview": "",
+		"prev": "",
+		"next": ""
 	}
 ]
