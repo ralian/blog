@@ -34,7 +34,14 @@ async function loadmd(path) {
 		});
 	}
 	
-	// Same with Graphviz
+	// Same with Highlight
+	try {hljs.highlightAll();} catch(ex) {
+		var highlight = document.querySelector('#Highlight-script');
+		highlight.addEventListener('load', function() {
+			hljs.highlightAll();
+		});
+	}
+	
 	try {renderGraphs();} catch(ex) {
 		var script_viz = document.querySelector('#GraphViz-script');
 		script_viz.addEventListener('load', function() {
