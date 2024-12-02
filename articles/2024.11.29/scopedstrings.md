@@ -18,7 +18,7 @@ To be clear, we're not going to avoid null-terminated strings in the compiled ou
 
 ```
 "Hello, world!"
-'Hello, world!"
+'Hello, world!'
 ```
 
 Instead, we will "reuse" the idea of scope to encapsulate our string literal. More exactly speaking, when we determine that the type represented by the scope is unambiguously a string (or char array, char list, char vector, what have you...) we will change to a much simpler grammar which accepts any tokens, with the exception of the scope closing character:
@@ -69,13 +69,13 @@ Let's add another type to our grammar so our strings aren't lonely. I'm going to
 We'll also add transformers so we can interpret the string and numeric values in Python:
 
 ```
-class TreeToJson(Transformer):
+class Tree(Transformer):
     def string(self, s:str):
         return s[-1].lstrip("str").lstrip(" ").lstrip("{").rstrip("}")
     def number(self, n):
         return float(n[-1].lstrip("num").lstrip(" ").lstrip("{").rstrip("}"))
 
-json_parser = Lark(r"""
+parser = Lark(r"""
 WSP: /[ \t\n\f\r]/
 
 value: list
@@ -89,7 +89,7 @@ NUMBER: "num" WSP* "{" WSP* /-?\d+(\.\d+)?([eE][+-]?\d+)?/ WSP* "}"
 """, start='value')
 ```
 
-I've created a full implementation that you can play around with [here].
+I've created a full implementation that you can play around with [here](articles/2024.11.29/parser.py).
 
 > Note: For some reason, the default regex engine in Lark won't accept `\X`. I've had success with replacing it with `(\s|\S)`. There's probably a better option than this.
 
