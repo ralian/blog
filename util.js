@@ -1,3 +1,7 @@
+function sortNum(a, b) {
+	return a - b;
+}
+
 function renderGraphs() {
 	for (c of $('code.graphviz')) {
 		let p = document.createElement("p");
@@ -69,12 +73,12 @@ function m_archive(manifest) {
 	let htmlStr = "";
 	let suffix = " open";
 	const dateOpts = {weekday: "long", year: "numeric", month: "long", day: "numeric"};
-	Object.keys(nestedByDate).sort().reverse().forEach(function(y, yi) {
+	Object.keys(nestedByDate).sort(sortNum).reverse().forEach(function(y, yi) {
 		htmlStr += `<blockquote><details${suffix}><summary>${y}</summary>`;
-		Object.keys(nestedByDate[y]).sort().reverse().forEach(function(m, mi) {
-			let mName = new Date(2000, m, 01).toLocaleString('default', { month: 'long' }); // Localize the numeric month
+		Object.keys(nestedByDate[y]).sort(sortNum).reverse().forEach(function(m, mi) {
+			let mName = new Date(2000, m, 1).toLocaleString('default', { month: 'long' }); // Localize the numeric month
 			htmlStr += `<blockquote><details${suffix}><summary>${mName}</summary>`;
-			Object.keys(nestedByDate[y][m]).sort().reverse().forEach(function(d, i) {
+			Object.keys(nestedByDate[y][m]).sort(sortNum).reverse().forEach(function(d, i) {
 				let dateStr = new Date(nestedByDate[y][m][d].created).toLocaleString('default', dateOpts);
 				htmlStr += `<p>${dateStr}: <a href='${nestedByDate[y][m][d].url}'>${nestedByDate[y][m][d].name}</a></p>`;
 			});
