@@ -61,5 +61,14 @@
 		"preview": "",
 		"prev": "",
 		"next": ""
+	},
+	{
+		"name": "Using Ninja outside of the Windows Developer Powershell",
+		"url": "?article=articles/2025.04.05/article.md",
+		"tags": "c++ ninja powershell msvc windows",
+		"created": "Apr 5 2025",
+		"preview": "",
+		"prev": "",
+		"next": ""
 	}
 ]

@@ -1,0 +1,76 @@
+{
+    "version": 4,
+    "cmakeMinimumRequired": {
+        "major": 3,
+        "minor": 23
+    },
+    "configurePresets": [
+        {
+            "name": "default",
+            "binaryDir": "bin/${presetName}/",
+            "installDir": "bin/${presetName}/install/"
+        },
+        {
+            "name": "gcc",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++"
+            }
+        },
+        {
+            "name": "debug",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "release",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "build-a",
+            "hidden": true,
+            "environment": {
+                "CMAKE_TARGETS": "A;$penv{CMAKE_TARGETS}"
+            }
+        },
+        {
+            "name": "build-b",
+            "hidden": true,
+            "environment": {
+                "CMAKE_TARGETS": "B $penv{CMAKE_TARGETS}"
+            }
+        },
+        {
+            "name": "gcc-debug-a",
+            "inherits": ["default", "gcc", "build-a"]
+        },
+        {
+            "name": "gcc-debug-b",
+            "inherits": ["default", "gcc", "build-b"]
+        },
+        {
+            "name": "gcc-debug-ab",
+            "inherits": ["default", "gcc", "build-a", "build-b"]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "default",
+            "hidden": true,
+            "targets": ["$env{CMAKE_TARGETS}"]
+        },
+        {
+            "name": "gcc-debug-a",
+            "configurePreset": "gcc-debug-a",
+            "inherits": "default"
+        }
+    ]
+}
+
+
