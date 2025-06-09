@@ -70,5 +70,14 @@
 		"preview": "",
 		"prev": "",
 		"next": ""
+	},
+	{
+		"name": "Bloom Lookahead Filters",
+		"url": "?article=articles/2025.06.08_bloom/bloom_lookahead_filter.md",
+		"tags": "c++ search caching",
+		"created": "June 8 2025",
+		"preview": "",
+		"prev": "",
+		"next": ""
 	}
 ]
