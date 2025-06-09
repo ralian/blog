@@ -11,7 +11,7 @@ That's less than I thought I would have to explain before we can jump into some 
 
 ## N-Gram Count Matrix
 
-The n-gram count matrix is simple but scales poorly (*very* poorly) as you increase N. To use a bit of python pseudocode, to get the count of appearances of the sequence \\\(e_0 e_1 \dots e_n\\\) from this N dimensional matrix, `count = mat[e0][e1]...[en]`. Of course, the memory requirement here is \\\(\vert  \Sigma \vert ^ N\\\) bytes - assuming we are using an unsigned 8 bit number for counts! But, the lookup is constant time (ignoring messy things like caches). Here's how count matrices of increasing size can be constructed:
+The n-gram count matrix is simple but scales poorly (*very* poorly) as you increase N. To use a bit of python pseudocode, to get the count of appearances of the sequence \\(e_0 e_1 \dots e_n\\) from this N dimensional matrix, `count = mat[e0][e1]...[en]`. Of course, the memory requirement here is \\\(\vert  \Sigma \vert ^ N\\\) bytes - assuming we are using an unsigned 8 bit number for counts! But, the lookup is constant time (ignoring messy things like caches). Here's how count matrices of increasing size can be constructed:
 
 ```c++
 constexpr size_t alphabet_size = 37;
