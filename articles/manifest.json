@@ -80,4 +80,14 @@
 		"prev": "",
 		"next": ""
 	}
+	,
+	{
+		"name": "Graph Editors Don't Have to Suck",
+		"url": "?article=articles/2025.08.03_graph_editors/article.md",
+		"tags": "graph editor c++ imgui",
+		"created": "August 3 2025",
+		"preview": "",
+		"prev": "",
+		"next": ""
+	}
 ]
