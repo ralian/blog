@@ -19,25 +19,6 @@ body {
 	/*background-color: rgba(255,255,255,0.05);*/
 }
 
-input[type=text] {
-  font-family: "Fira Sans", sans-serif;
-  font-size: 24px;
-  background-color: white;
-  background-image: url("https://www.svgrepo.com/download/491473/search.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  border-radius: 10px;
-  color: black;
-  border: none;
-  width: 80%;
-  padding: 10px 10px 10px 60px;
-  filter: invert(100%);
-}
-
-input[type=text]:focus {
-  outline: none;
-}
-
 /* MD Elements */
 
 blockquote {
@@ -63,29 +44,33 @@ img {
     -webkit-text-fill-color: transparent;
 }*/
 
-a:link {color: #4760e8;}
-a:visited {color: #18ac28;}
+a:link {color: #8a92ff;}
+a:visited {color: #31ce41;}
 a:hover {color: #36cdd5;}
 a:active {color: white;}
 
 /* Navbar */
 
 .topnav {
-  background: linear-gradient(90deg, rgba(12,7,88,1) 14%, rgba(98,0,81,1) 73%);
-  overflow: hidden;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 2; /* Render in front of mathjax */
+	background: linear-gradient(90deg, rgb(8, 0, 121) 14%, rgb(105, 0, 88) 73%);
+	overflow: visible;
+	position: sticky;
+	top: 0;
+	width: 100%;
+	z-index: 100; /* Higher z-index for proper layering */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 1rem;
 }
 
 .topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 0.8rem 1rem;
+	text-decoration: none;
+	font-size: 1.3rem;
+	display: inline-block;
 }
 
 .topnav a:hover {
@@ -95,6 +80,167 @@ a:active {color: white;}
 .topnav a.active {
   background-color: rgba(255,255,255,0.2);
   color: white;
+}
+
+.topnav-left {
+	display: flex;
+	align-items: center;
+}
+
+.topnav-right {
+	display: flex;
+	align-items: center;
+}
+
+/* Search */
+
+.search-container {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50vw;
+	max-width: 50vw;
+}
+
+.search {
+	background-image: url("search.svg");
+	background-size: 1.2rem 1.2rem;
+	background-repeat: no-repeat;
+	background-position: 0.75rem center;
+	padding: 0.5rem 0.5rem 0.5rem 2.5rem;
+	width: 100%;
+	max-width: 40vw;
+	min-width: 20rem;
+	border-radius: 1.5rem;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	background-color: rgba(255, 255, 255, 0.1);
+	color: #fff;
+	font-size: 1rem;
+	transition: all 0.3s ease;
+}
+
+.search:focus {
+	outline: none;
+	border-color: rgba(255, 255, 255, 0.6);
+	background-color: rgba(255, 255, 255, 0.15);
+	box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.search::placeholder {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.search-results {
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 100%;
+	background-color: rgba(17, 17, 17, 0.95);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 8px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+	z-index: 1000;
+	margin-top: 5px;
+	display: none;
+	backdrop-filter: blur(10px);
+}
+
+.search-results.show {
+	display: block;
+}
+
+.search-result {
+	padding: 12px 16px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	color: #eee;
+	text-decoration: none;
+	display: block;
+	transition: background-color 0.2s ease;
+}
+
+.search-result:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search-result:last-child {
+	border-bottom: none;
+}
+
+.search-result-title {
+	font-weight: 600;
+	font-size: 1rem;
+	margin-bottom: 4px;
+	color: #fff;
+}
+
+.search-result-snippet {
+	font-size: 0.9rem;
+	color: #ccc;
+	line-height: 1.4;
+}
+
+.search-result-date {
+	font-size: 0.8rem;
+	color: #888;
+	margin-top: 4px;
+}
+
+/* Responsive design for search */
+@media (max-width: 768px) {
+	.search {
+		width: 250px;
+		font-size: 0.9rem;
+	}
+	
+	.search-results {
+		width: 350px;
+	}
+	
+	.topnav {
+		padding: 0 0.5rem;
+	}
+	
+	.topnav a {
+		font-size: 1.1rem;
+		padding: 0.6rem 0.8rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.search {
+		width: 200px;
+		font-size: 0.8rem;
+		padding: 0.4rem 0.4rem 0.4rem 2rem;
+	}
+	
+	.search-results {
+		width: 300px;
+	}
+	
+	.topnav a {
+		font-size: 1rem;
+		padding: 0.5rem 0.6rem;
+	}
+}
+
+/* General input styling - overridden by .search class */
+input[type=text]:not(.search) {
+	font-family: "Fira Sans", sans-serif;
+	font-size: 1rem;
+	background-color: #111;
+	color: #fff;
+	border-radius: 10px;
+	border: 1px solid #888;
+	margin: 0.5rem;
+}
+
+input[type=text]:not(.search):focus {
+	outline: none;
 }
 
 /* Code Blocks */

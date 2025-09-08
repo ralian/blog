@@ -54,7 +54,7 @@ async function loadmd(path) {
 	}
 }
 
-function m_archive(manifest) {
+function archive(manifest) {
 	let nestedByDate = {};
 	for (item of manifest) {
 		let cdate = new Date(item.created);
@@ -91,25 +91,46 @@ function m_archive(manifest) {
 	$(htmlStr).appendTo($("#article")[0]);
 };
 
-let m_search_manifest = {}
-function m_search_change() {
-	let s = $("#search")[0].value;
-	$("#results")[0].innerHTML = "";
-	for (item of m_search_manifest) {
-		if (item.name.toLowerCase().includes(s.toLowerCase()) || item.tags.toLowerCase().includes(s.toLowerCase()))
-			$(`<p>${item.created}: <a href='${item.url}'>${item.name}</a></p>`).appendTo($("#results")[0]);
-	}
+let search_manifest = {}
+
+function hide_search_results() {
+	$(".search-results")[0].classList.remove("show");
 }
 
-function m_search(manifest) {
-	m_search_manifest = manifest;
-	$("#article")[0].innerHTML = "<input id='search' type='text' onchange='m_search_change()'><div id='results'>";
+function search_change() {
+	let s = $(".search")[0].value;
+	$(".search-results")[0].innerHTML = "";
+	for (item of search_manifest) {
+		if (item.name.toLowerCase().includes(s.toLowerCase()) || item.tags.toLowerCase().includes(s.toLowerCase()))
+			$(`<div class="search-result" onclick="window.location.href='${item.url}'"><div class="search-result-title">${item.name}</div><div class="search-result-snippet">${item.tags}</div><div class="search-result-date">${item.created}</div></div>`).appendTo($("#search-results")[0]);
+	}
+	$(".search-results")[0].classList.add("show");
 }
+
+// Add event listeners for hiding search results
+document.addEventListener('DOMContentLoaded', function() {
+	// Escape key listener
+	document.addEventListener('keydown', function(event) {
+		if (event.key === 'Escape') {
+			hide_search_results();
+		}
+	});
+	
+	// Click outside listener
+	document.addEventListener('click', function(event) {
+		const searchContainer = document.querySelector('.search-container');
+		const searchResults = document.querySelector('.search-results');
+		
+		// Check if click is outside search container and results
+		if (!searchContainer.contains(event.target) && !searchResults.contains(event.target)) {
+			hide_search_results();
+		}
+	});
+});
 
 async function loadmanifest(path, opts) {
 	let resp = await fetch(path);
-	let manifest = await resp.json();
-	
-	if (opts === "search") m_search(manifest);
-	else m_archive(manifest);
+	let search = await resp.json();
+	search_manifest = search.slice();
+	archive(search);
 }

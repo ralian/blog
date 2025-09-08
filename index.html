@@ -19,16 +19,16 @@
 	</head>
 	<body>
 		<div class="topnav">
-		  <a class="active" href="?">Home</a>
-		  <a href="">Archive</a>
-		  <a href="?article=pages/contact.md">Contact</a>
-		  <a href="?article=pages/aboutme.md">About Me</a>
+		  <div class="topnav-left">
+			<a class="active" href="?">Articles</a>
+			<a href="?article=pages/aboutme.md">About Me</a>
+		  </div>
+		  <div class="search-container">
+			<input class="search" type="text" oninput="search_change()" placeholder="Search...">
+			<div class="search-results" id="search-results"></div>
+		  </div>
+		  <div class="topnav-right"></div>
 		</div>
-		<div id="spacer"></div>
-		<script>
-			let height = $('.topnav')[0].getBoundingClientRect().height;
-			$('#spacer')[0].style = `height: ${height}px;`
-		</script>
 		<div id="content">
 			<div id="article"></p>
 		</div>
