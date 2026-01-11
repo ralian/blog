@@ -22,6 +22,7 @@
 		  <div class="topnav-left">
 			<a class="active" href="?">Articles</a>
 			<a href="?article=pages/aboutme.md">About Me</a>
+			<a href="https://ralian.github.io/gitconfig-generator/">.gitconfig tool</a>
 		  </div>
 		  <div class="search-container">
 			<input class="search" type="text" oninput="search_change()" placeholder="Search...">
@@ -37,9 +38,10 @@
 			let article = u.searchParams.get("article");
 			if (article) {
 				loadmd(article);
+				populate_manifest("articles/manifest.json");
 			} else {
 				let opts = u.searchParams.get("manifest");
-				loadmanifest("articles/manifest.json", opts);
+				load_manifest("articles/manifest.json", opts);
 			}
 		</script>
 	</body>

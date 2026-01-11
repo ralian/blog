@@ -128,9 +128,12 @@ document.addEventListener('DOMContentLoaded', function() {
 	});
 });
 
-async function loadmanifest(path, opts) {
+async function populate_manifest(path) {
 	let resp = await fetch(path);
-	let search = await resp.json();
-	search_manifest = search.slice();
-	archive(search);
+	search_manifest = await resp.json();
+}
+
+async function load_manifest(path, opts) {
+	await populate_manifest(path);
+	archive(search_manifest);
 }
