@@ -99,6 +99,7 @@ body {
 pre:has(code) {
 	display: flex;
 	overflow-x: auto;
+	max-height: none !important;
 	background-color: var(--tblr-gray-900);
 	border: 1px solid var(--tblr-border-color);
 	border-radius: var(--tblr-border-radius);

@@ -97,5 +97,14 @@
 		"preview": "",
 		"prev": "",
 		"next": ""
+	},
+	{
+		"name": "Hardening virtual inheritance in Python",
+		"url": "?article=articles/2026.06.13/post.md",
+		"tags": "python abc virtual inheritance",
+		"created": "Jun 13 2026",
+		"preview": "",
+		"prev": "",
+		"next": ""
 	}
 ]
