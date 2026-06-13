@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 	<head>
 		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<title>Zero Sum</title>
 		<meta name="description" content="Fun deep dives, ideas, and C++ snippets"/>
 		<link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 		<link async rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css">
 		<script id="Highlight-script" async src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 		<script id="MathJax-script" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-chtml.min.js"></script>
@@ -18,21 +21,71 @@
 		<link rel="stylesheet" href="style.css"/>
 	</head>
 	<body>
-		<div class="topnav">
-		  <div class="topnav-left">
-			<a class="active" href="?">Articles</a>
-			<a href="?article=pages/aboutme.md">About Me</a>
-			<a href="https://ralian.github.io/gitconfig-generator/">.gitconfig tool</a>
-		  </div>
-		  <div class="search-container">
-			<input class="search" type="text" oninput="search_change()" placeholder="Search...">
-			<div class="search-results" id="search-results"></div>
-		  </div>
-		  <div class="topnav-right"></div>
+		<div class="page">
+			<header class="navbar navbar-expand-md d-print-none sticky-top">
+				<div class="container-xl">
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<a class="navbar-brand navbar-brand-autodark" href="?">Zero Sum</a>
+					<div class="collapse navbar-collapse" id="navbar-menu">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link active" href="?">
+									<span class="nav-link-icon d-md-none d-lg-inline-block">
+										<i class="ti ti-news"></i>
+									</span>
+									<span class="nav-link-title">Articles</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="?article=pages/aboutme.md">
+									<span class="nav-link-icon d-md-none d-lg-inline-block">
+										<i class="ti ti-user"></i>
+									</span>
+									<span class="nav-link-title">About Me</span>
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="https://ralian.github.io/gitconfig-generator/" target="_blank" rel="noopener">
+									<span class="nav-link-icon d-md-none d-lg-inline-block">
+										<i class="ti ti-git-branch"></i>
+									</span>
+									<span class="nav-link-title">.gitconfig tool</span>
+								</a>
+							</li>
+						</ul>
+						<div class="search-container ms-auto me-auto px-3 flex-grow-1">
+							<div class="input-icon w-100 mx-auto" style="max-width: 28rem;">
+								<span class="input-icon-addon">
+									<i class="ti ti-search"></i>
+								</span>
+								<input class="form-control search" type="text" oninput="search_change()" placeholder="Search...">
+							</div>
+							<div class="search-results dropdown-menu" id="search-results"></div>
+						</div>
+					</div>
+				</div>
+			</header>
+			<div class="page-wrapper">
+				<div class="page-body">
+					<div class="container-xl">
+						<div id="article" class="markdown"></div>
+					</div>
+				</div>
+			</div>
+			<footer class="footer footer-transparent d-print-none">
+				<div class="container-xl">
+					<div class="row text-center">
+						<div class="col-12">
+							<p class="mb-1">Copyright 2026 Will Bowers</p>
+							<p class="text-secondary mb-0">All content is provided CC BY without any warranty whatsoever.</p>
+						</div>
+					</div>
+				</div>
+			</footer>
 		</div>
-		<div id="content">
-			<div id="article"></p>
-		</div>
+		<script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
 		<script>
 			let u = new URL(window.location.href);
 			let article = u.searchParams.get("article");

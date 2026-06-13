@@ -1,4 +1,4 @@
-# Bloom Look-Ahead Filter (BLAF)
+# Bloom Look-Ahead Filters
 
 Here, I will show how a bloom filter can be used for lookahead indexing and search.
 
@@ -144,6 +144,6 @@ unsigned short count_5_sequence(std::string seq)
 }
 ```
 
-Admittedly, you probably won't see any speedup with this until the size of the edge list becomes very large - but once it does, you will likely see a dramatic speedup as the bloom filter lookup is effectively constant time. I might do some performance tests at a later date and revisit this topic, but for now -
+Admittedly, you probably won't see any speedup with this until the size of the edge list becomes very large - but once it does, you will likely see a dramatic speedup as the bloom filter lookup is effectively constant time. I might do some performance tests at a later date and revisit this topic.
 
-peace out.
+Until next time!
