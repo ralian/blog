@@ -1,4 +1,4 @@
-This is the repo for my blog website, found at `xyz link`
+This is the repo for my blog website, found at `https://ralian.dev`
 
 To develop locally on,
 ```
