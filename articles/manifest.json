@@ -106,5 +106,14 @@
 		"preview": "",
 		"prev": "",
 		"next": ""
+	},
+	{
+		"name": "Python for the C++ Developer",
+		"url": "?article=articles/2026.08.28/post.md",
+		"tags": "python typing intro c++",
+		"created": "Aug 28 2026",
+		"preview": "",
+		"prev": "",
+		"next": ""
 	}
 ]
