@@ -1,3 +1,5 @@
+# Python for the C++ Developer
+
 This is part one in an orientation to Python. The target audience is experienced users of other languages; especially compiled languages, and especially-especially C++. This is not an overview of the basics... there will be basic concepts, but we will proceed in an order that answers the questions of "what makes Python interesting and useful" rather than "how do I use Python?" This is an _orientation_ rather than a _tutorial_ and is definitely not a _programming tutorial_. It is designed to _orient_ you.
 
 With that disclaimer out of the way, let's dive in!
